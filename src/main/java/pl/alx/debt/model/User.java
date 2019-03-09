@@ -2,12 +2,14 @@ package pl.alx.debt.model;
 
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity                                 //mowi, ze ta klada ma tabele w bazie danych
 @Table(name="user")                     //podaje tabele jakiej beda dane sie  zapisywac
 @Getter
+@NoArgsConstructor
 public class User {
 
     @Id
@@ -24,6 +26,10 @@ public class User {
 
     @Column(length = 45, unique = true, nullable = false)
     private String lastName;
+
+    public User (int id){
+        this.id = id;
+    }
 
 
 }

@@ -20,46 +20,36 @@
 <%@ include file="/WEB-INF/navbar.jsp" %>
 <div class="container">
 
-    <div class="row">
-        <div class="col-sm-offset-3 col-sm-6 col-xs-12">
-            <form method="post"
-                  action="<c:url value="/users/create"/>"
-                  class="form-horizontal">
-                <input type="hidden" name="id" value="${user.id}">
-                <div class="form-group">
-                    <label for="imie" class="col-sm-2 control-label">Imię: </label>
-                    <div class="col-sm-10">
-                        <input id="imie"
-                               type="text"
-                               name="firstName"
-                               class="form-control"
-                               value="${user.firstName}"
-                               placeholder="Wprowadź imię">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="nazwisko" class="col-sm-2 control-label">Nazwisko: </label>
-                    <div class="col-sm-10">
-                        <input id="nazwisko"
-                               type="text"
-                               name="lastName"
-                               class="form-control"
-                               value="${user.lastName}"
-                               placeholder="Wprowadź nazwisko">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="email" class="col-sm-2 control-label">Email: </label>
-                    <div class="col-sm-10">
-                        <input id="email"
-                               type="email"
-                               name="email"
-                               class="form-control"
-                               value="${user.email}"
-                               placeholder="Wprowadź email">
-                    </div>
+    <form method="post"
+    action="<c:url value="/debts/create"/>"
+    class="form-horizontal">
+    <div class="form-group">
+        <label for="debtorId" class="col-sm-2 control-label">Debtor: </label>
+        <div class="col-sm-9">
+            <select id="debtorId" name="debtorId"
+                    class="form-control">
+                <option value="">-- select debtor --</option>
+                <c:forEach var="debtor" items="${debtors}">
+                    <option value="${debtor.id}">${debtor.firstName} ${debtor.lastName}</option>
+                </c:forEach>
+            </select>
+        </div>
+        <div class="col-sm-1">
+            <button type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-plus"></span>
+            </button>
+        </div>
+    </div>
+                    <div class="form-group">
+                        <label for="amount" class="col-sm-2 control-label">kwota zadlużenia: </label>
+                        <div class="col-sm-10">
+                            <input id="amount"
+                                   type="amount"
+                                   name="amount"
+                                   class="form-control"
+                                   value="${debt.amount}"
+                                   placeholder="prowadz kwote">
+                        </div>
                 </div>
 
                 <div class="form-group">

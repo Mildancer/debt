@@ -3,6 +3,7 @@ package pl.alx.debt.model;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.apache.tomcat.jni.Local;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -10,7 +11,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Getter                     //adnotacja z Lomboka by gettery settery zrobic
-// @NoArgsConstructor
+@NoArgsConstructor
 public class Debt {
 
 
@@ -32,6 +33,14 @@ public class Debt {
     @ManyToOne      //1 lender moze miec wiele pozyczek
     @JoinColumn (name="debtor_id") //odnosi sie do tabeli debtor i jest to id-polaczenie sie miedyz 2 tabelami
     private Debtor debtor;
+
+    public Debt(User lender, Debtor debtor, BigDecimal amount){
+        this.lender = lender;
+        this.debtor = debtor;
+        this.amount = amount;
+        this.createdAt = LocalDateTime.now();
+        this.paidOff = false;
+    }
 
 
     public String getLenderName(){
