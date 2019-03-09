@@ -1,9 +1,12 @@
 package pl.alx.debt.model;
 
 
+import lombok.Getter;
+
 import javax.persistence.*;
 
 @Entity                                 //mowi, ze ta klada ma tabele w bazie danych
+@Getter
 //domyslna nazwa tabelki Debtor
 // imie, nazwisko, id, email
 public class Debtor {

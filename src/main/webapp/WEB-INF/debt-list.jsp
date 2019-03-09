@@ -37,9 +37,9 @@
                 <c:forEach var="debt" items="${debts}" varStatus="loop">
                     <tr>
                         <td>${debt.id}</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>${debt.lenderName}</td>
+                        <td>${debt.debtorName}</td>
+                        <td>${debt.amount}</td>
                         <td>
                             <a class="btn btn-primary btn-block btn-sm"
                                href="<c:url value="/users/update?id=${user.id}"/>">

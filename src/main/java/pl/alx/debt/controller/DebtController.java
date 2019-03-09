@@ -26,4 +26,9 @@ public class DebtController {
         return "debt-list";
 
     }
+
+    @GetMapping("/debts/create")
+    public String debtForm(){
+        return "debt-form";
+    }
 }

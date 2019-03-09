@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Getter                     //adnotacja z Lomboka by gettery settery zrobic
-@NoArgsConstructor
+// @NoArgsConstructor
 public class Debt {
 
 
@@ -33,6 +33,15 @@ public class Debt {
     @JoinColumn (name="debtor_id") //odnosi sie do tabeli debtor i jest to id-polaczenie sie miedyz 2 tabelami
     private Debtor debtor;
 
+
+    public String getLenderName(){
+        return lender.getFirstName() + " " + lender.getLastName();
+
+    }
+    public String getDebtorName(){
+        return debtor.getFirstName() + " " + debtor.getLastName();
+
+    }
 
 
 }
