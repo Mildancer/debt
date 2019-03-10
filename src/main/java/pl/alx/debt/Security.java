@@ -33,7 +33,8 @@ public class Security extends WebSecurityConfigurerAdapter {
         protected void configure(HttpSecurity http) throws Exception{
                  http.authorizeRequests()
                     .mvcMatchers("/register").permitAll()
-                    .anyRequest().authenticated()
+                         .mvcMatchers("/users").hasRole("ADMIN") // tylko ADMIN moze wejsc na ta strone
+                         .anyRequest().authenticated()
                     .and()
                     .formLogin()
                          .permitAll()

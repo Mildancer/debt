@@ -1,5 +1,6 @@
 <%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
@@ -16,13 +17,18 @@
             </button>
             <a class="navbar-brand" href="<c:url value="/"/>"><span class="glyphicon glyphicon-home"></span></a>
         </div>
-
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li><a href="<c:url value="/debts"/>">Dlugi</a></li>
                 <li>
                     <a href="<c:url value="/debts/create"/>">Nowy <span class="glyphicon glyphicon-plus"></span></a>
                 </li>
+
+                <sec:authorize access="hasRole('ADMIN')">
+                <li>
+                    <a href="<c:url value="/users"/>">Users<span class="glyphicon glyphicon-plus"></span></a>
+                </li>
+                </sec:authorize>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="<c:url value="/logout"/>">Logout</a></li>

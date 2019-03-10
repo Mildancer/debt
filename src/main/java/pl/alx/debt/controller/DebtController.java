@@ -58,9 +58,15 @@ public class DebtController {
 
     @PostMapping("/debts/create")
         public String saveDebt(@RequestParam Integer debtorId,
-                @RequestParam BigDecimal amount){
+                @RequestParam BigDecimal amount,
+                               Principal principal){
 
-            User lender = new User(1); // TODO change to logged in user
+
+
+        String email = principal.getName();
+
+        User lender = userDao.findByEmail(email);
+
             Optional<Debtor> debtor = debtorDao.findById(debtorId);
 
             Debt debt = new Debt(lender, debtor.get(), amount);

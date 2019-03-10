@@ -20,41 +20,48 @@
 <%@ include file="/WEB-INF/navbar.jsp" %>
 <div class="container">
 
-    <form method="post"
-    action="<c:url value="/debts/create"/>"
-    class="form-horizontal">
-    <div class="form-group">
-        <label for="debtorId" class="col-sm-2 control-label">Debtor: </label>
-        <div class="col-sm-9">
-            <select id="debtorId" name="debtorId"
-                    class="form-control">
-                <option value="">-- select debtor --</option>
-                <c:forEach var="debtor" items="${debtors}">
-                    <option value="${debtor.id}">${debtor.firstName} ${debtor.lastName}</option>
-                </c:forEach>
-            </select>
-        </div>
-        <div class="col-sm-1">
-            <button type="button" class="btn btn-default">
-                <span class="glyphicon glyphicon-plus"></span>
-            </button>
-        </div>
-    </div>
-                    <div class="form-group">
-                        <label for="amount" class="col-sm-2 control-label">kwota zadlużenia: </label>
-                        <div class="col-sm-10">
-                            <input id="amount"
-                                   type="amount"
-                                   name="amount"
-                                   class="form-control"
-                                   value="${debt.amount}"
-                                   placeholder="prowadz kwote">
-                        </div>
+    <div class="row">
+        <div class="col-sm-offset-3 col-sm-6 col-xs-12">
+            <form method="post"
+                  action="<c:url value="/debts/create"/>"
+                  class="form-horizontal">
+                <input type="hidden" name="id" value="${debt.id}">
+                <div class="form-group">
+                    <label for="debtorId" class="col-sm-2 control-label">Debtor: </label>
+                    <div class="col-sm-9">
+                        <select id="debtorId" name="debtorId"
+                                class="form-control">
+                            <option value="">-- select debtor --</option>
+                            <c:forEach var="debtor" items="${debtors}">
+                                <option value="${debtor.id}">${debtor.firstName} ${debtor.lastName}</option>
+                            </c:forEach>
+                        </select>
+                    </div>
+                    <div class="col-sm-1">
+                        <button type="button"
+                                data-toggle="modal"
+                                data-target="#debtor-create"
+                                class="btn btn-default">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="amount" class="col-sm-2 control-label">Amount: </label>
+                    <div class="col-sm-10">
+                        <input id="amount"
+                               type="text"
+                               name="amount"
+                               class="form-control"
+                               value=""
+                               placeholder="Enter amount">
+                    </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-primary">Zapisz</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
                     </div>
                 </div>
             </form>
@@ -62,6 +69,64 @@
     </div>
 
 </div>
+<div id="debtor-create" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                <form action="<c:url value="/debtor/create"/>" method="post" class="form-horizontal">
+                    <div class="form-group">
+                        <label for="firstName" class="col-sm-3 control-label">First name: </label>
+                        <div class="col-sm-9">
+                            <input id="firstName"
+                                   type="text"
+                                   name="firstName"
+                                   class="form-control"
+                                   value=""
+                                   placeholder="Enter first name">
+                        </div>
+                    </div>
 
+                    <div class="form-group">
+                        <label for="lastName" class="col-sm-3 control-label">Last Name: </label>
+                        <div class="col-sm-9">
+                            <input id="lastName"
+                                   type="text"
+                                   name="lastName"
+                                   class="form-control"
+                                   value=""
+                                   placeholder="Enter last name">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" class="col-sm-3 control-label">Email: </label>
+                        <div class="col-sm-9">
+                            <input id="email"
+                                   type="email"
+                                   name="email"
+                                   required
+                                   class="form-control"
+                                   value=""
+                                   placeholder="Enter email">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-9">
+                            <button type="submit" class="btn btn-primary">Zapisz</button>
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

@@ -27,5 +27,9 @@ public class Debtor {
     private String email;
 
 
-
+    public Debtor(String firstName, String lastName, String email) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+    }
 }

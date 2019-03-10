@@ -11,14 +11,14 @@
 -- (199.99, '2019-03-08', 0, 1
 
 
-INSERT INTO user(id, email, first_name, last_name, password)
+INSERT INTO user(id, role, email, first_name, last_name, password)
  VALUES
- (1, 't1@email.com', 'Wojciech', 'Musial', '$2a$10$bUhiQH1IVW4HeGGJVxPFFeTXPPsD5p2uhmjkMR/nuSy6uRpcd4OH2'),
- (2, 't2@email.com', 'Marcin', 'Kowalski', '$2a$10$bUhiQH1IVW4HeGGJVxPFFeTXPPsD5p2uhmjkMR/nuSy6uRpcd4OH2'),
- (3, 't3@email.com', 'Marek', 'Marecki', '$2a$10$bUhiQH1IVW4HeGGJVxPFFeTXPPsD5p2uhmjkMR/nuSy6uRpcd4OH2'),
- (4, 't4@email.com', 'Zbigniew', 'Nowak', '$2a$10$bUhiQH1IVW4HeGGJVxPFFeTXPPsD5p2uhmjkMR/nuSy6uRpcd4OH2'),
- (5, 't5@email.com', 'Sylwia', 'Wisniewska', '$2a$10$bUhiQH1IVW4HeGGJVxPFFeTXPPsD5p2uhmjkMR/nuSy6uRpcd4OH2'),
- (6, 't6@email.com', 'Klaudia', 'Kowalska', '$2a$10$bUhiQH1IVW4HeGGJVxPFFeTXPPsD5p2uhmjkMR/nuSy6uRpcd4OH2');
+ (1, 'ADMIN','t1@email.com', 'Wojciech', 'Musial', '$2a$10$bUhiQH1IVW4HeGGJVxPFFeTXPPsD5p2uhmjkMR/nuSy6uRpcd4OH2'),
+ (2, 'USER','t2@email.com', 'Marcin', 'Kowalski', '$2a$10$bUhiQH1IVW4HeGGJVxPFFeTXPPsD5p2uhmjkMR/nuSy6uRpcd4OH2'),
+ (3, 'USER','t3@email.com', 'Marek', 'Marecki', '$2a$10$bUhiQH1IVW4HeGGJVxPFFeTXPPsD5p2uhmjkMR/nuSy6uRpcd4OH2'),
+ (4, 'USER','t4@email.com', 'Zbigniew', 'Nowak', '$2a$10$bUhiQH1IVW4HeGGJVxPFFeTXPPsD5p2uhmjkMR/nuSy6uRpcd4OH2'),
+ (5, 'USER','t5@email.com', 'Sylwia', 'Wisniewska', '$2a$10$bUhiQH1IVW4HeGGJVxPFFeTXPPsD5p2uhmjkMR/nuSy6uRpcd4OH2'),
+ (6, 'USER','t6@email.com', 'Klaudia', 'Kowalska', '$2a$10$bUhiQH1IVW4HeGGJVxPFFeTXPPsD5p2uhmjkMR/nuSy6uRpcd4OH2');
 
 INSERT INTO debtor(id, email, first_name, last_name)
  VALUES
