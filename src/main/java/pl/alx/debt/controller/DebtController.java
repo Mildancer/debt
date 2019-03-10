@@ -8,12 +8,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pl.alx.debt.dao.DebtDao;
 import pl.alx.debt.dao.DebtorDao;
+import pl.alx.debt.dao.UserDao;
 import pl.alx.debt.model.Debt;
 import pl.alx.debt.model.Debtor;
 import pl.alx.debt.model.User;
 
 import javax.servlet.http.HttpServletRequest;
 import java.math.BigDecimal;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -27,11 +29,17 @@ public class DebtController {
     @Autowired
     private DebtorDao debtorDao;
 
+    @Autowired
+    private UserDao userDao;
+
 
     @GetMapping("/debts")
-    public String debtPage(Model model) {
+    public String debtPage(Model model, Principal principal) {
 
-        List<Debt> debts = debtDao.findAll();
+        String email = principal.getName();
+        User loggedInUser = userDao.findByEmail(email);
+
+        List<Debt> debts = debtDao.findByLender(loggedInUser);
 
         model.addAttribute("debts", debts);                        // model dodaje  liste debtow z bazy danych -aby dodac do strony jsp
 

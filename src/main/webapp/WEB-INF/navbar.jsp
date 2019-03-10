@@ -24,6 +24,8 @@
                     <a href="<c:url value="/users/create"/>">Nowy <span class="glyphicon glyphicon-plus"></span></a>
                 </li>
             </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="<c:url value="/logout"/>">Logout</a></li>
         </div>
     </div>
 </nav>

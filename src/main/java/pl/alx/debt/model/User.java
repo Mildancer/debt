@@ -21,15 +21,20 @@ public class User {
 
     private String password;
 
-    @Column(length = 45, unique = true, nullable = false)
+    @Column(length = 45, unique = false, nullable = false)
     private String firstName;
 
-    @Column(length = 45, unique = true, nullable = false)
+    @Column(length = 45, unique = false, nullable = false)
     private String lastName;
 
     public User (int id){
         this.id = id;
     }
 
-
+    public User(String email, String password, String firstName, String lastName) {
+        this.email = email;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
 }
